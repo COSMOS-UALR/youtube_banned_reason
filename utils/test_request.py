@@ -18,8 +18,7 @@ class TestBannedRequests(asynctest.TestCase):
 
     async def test_all_banned_reasons(self,):
         await self.R.create_connections()
-        # private video
-        v = await self.R.get_banned_reason('-rc1hGlFqr8')
+        # private videos
         self.assertEqual(await self.R.get_banned_reason('-rc1hGlFqr8'), {'banned_status': 'LOGIN_REQUIRED', 'banned_reason': 'This video is private.', 'banned_message': 'This video is private.'})
         # account ternimated
         self.assertEqual(await self.R.get_banned_reason('-KnqC5-fHik'), {'banned_status': 'ERROR', 'banned_reason': 'Video unavailable', 'banned_message': 'Video unavailable'})
