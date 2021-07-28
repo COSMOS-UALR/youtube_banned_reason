@@ -26,6 +26,10 @@ class Process(Request):
                 data["banned_status"] = results['status']
                 data["banned_reason"] = results['reason']
                 data["banned_message"] = "\n".join(results['messages'])
+            else:
+                data["banned_status"] = None
+                data["banned_reason"] = None
+                data["banned_message"] = None
         save_data(data, fname, 'xlsx')
 
 if __name__ == '__main__':

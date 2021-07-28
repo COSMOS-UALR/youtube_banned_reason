@@ -1,5 +1,7 @@
 # YouTube Banned Reason
-A script to find the banned reason for YouTube videos
+A script to find the banned reason for YouTube videos. This works by reading json/csv/xlsx files containing YouTube video data. It will grab the video ids from those files and query the YouTube iframe API to get the video's banned reason. We will update the Import files with this information and save them to the Export folder. 
+
+The script will add these columns to the video data: `banned_status`, `banned_reason`, `banned_message` (all say pretty much the same thing). If a video is available, these columns will be empty.
 
 # Run the script
 1. Git clone the repository
