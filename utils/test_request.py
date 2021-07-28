@@ -23,6 +23,10 @@ class TestBannedRequests(asynctest.TestCase):
         self.assertEqual(await self.R.get_banned_reason('-rc1hGlFqr8'), {'banned_status': 'LOGIN_REQUIRED', 'banned_reason': 'This video is private.', 'banned_message': 'This video is private.'})
         # account ternimated
         self.assertEqual(await self.R.get_banned_reason('-KnqC5-fHik'), {'banned_status': 'ERROR', 'banned_reason': 'Video unavailable', 'banned_message': 'Video unavailable'})
+        # video unavailable
+        self.assertEqual(await self.R.get_banned_reason('cm5_-X85pnl'), {'banned_status': 'ERROR', 'banned_reason': 'Video unavailable', 'banned_message': 'Video unavailable'})
+        # against TOS
+        self.assertEqual(await self.R.get_banned_reason('FckNFcypc90'), {'banned_status': 'ERROR', 'banned_reason': "This video has been removed for violating YouTube's Terms of Service.", 'banned_message': "This video has been removed for violating YouTube's Terms of Service."})
 
 
 
