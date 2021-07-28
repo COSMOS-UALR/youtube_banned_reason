@@ -28,7 +28,9 @@ class Process(Request):
                 data["banned_message"] = "\n".join(results['messages'])
         save_data(data, fname, 'xlsx')
 
-
+if __name__ == '__main__':
+    p = Process()
+    asyncio.run(p.main())
 
 
 
