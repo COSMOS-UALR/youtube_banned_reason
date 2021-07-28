@@ -13,7 +13,7 @@ class Process(Request):
         video_id_column_name = ""
 
 
-        self.create_connections()
+        await self.create_connections()
         for data, fname in import_data():
             tasks = [self.get_banned_reason(video_id) for video_id in data[video_id_column_name]]
             results = [await t for t in tqdm(asyncio.as_completed(tasks), desc="Getting Banned Reason")]
@@ -22,14 +22,7 @@ class Process(Request):
 
     def save_results(self, data, results, fname):
         for data, results in zip(data, results):
-            if results is not None:
-                data["banned_status"] = results['status']
-                data["banned_reason"] = results['reason']
-                data["banned_message"] = "\n".join(results['messages'])
-            else:
-                data["banned_status"] = None
-                data["banned_reason"] = None
-                data["banned_message"] = None
+            data.update(results)
         save_data(data, fname, 'xlsx')
 
 if __name__ == '__main__':
