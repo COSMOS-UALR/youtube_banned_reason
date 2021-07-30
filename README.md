@@ -14,6 +14,12 @@ The script will add these columns to the video data: `banned_status`, `banned_re
 7. The output will be in the `Export` folder
     - Currently set to export as xlsx
 
+# Exported data
+The script will add these columns to the video data: `banned_status`, `banned_reason`, `banned_message`. 
+These are three different responses we get from YouTube's iFrame player API. The `banned_message` would be the message displayed on the YouTube site. The other values are likley used for YouTube's back end (we don't have documentation on their API). 
+
+If `banned_status`, `banned_reason`, `banned_message` are `None`, that means the YouTube video is not banned and is accessable. 
+
 # Cookies & API Keys
 For the API to work, you need a propritary API key and a cookie from the YouTube iFrame player. There is currenlty one in this project, but we do not know when it will expire. One way to generate your own is to open the `player.html` file and fetch the cookie and key from the player:
 1. In Chrome, open `player.html`.
