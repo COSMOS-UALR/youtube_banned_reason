@@ -27,5 +27,13 @@ class TestBannedRequests(asynctest.TestCase):
         # against TOS
         self.assertEqual(await self.R.get_banned_reason('FckNFcypc90'), {'banned_status': 'ERROR', 'banned_reason': "This video has been removed for violating YouTube's Terms of Service.", 'banned_message': "This video has been removed for violating YouTube's Terms of Service."})
 
+    async def test_false_positives(self):
+        await self.R.create_connections()
+        videos = ["aTr3Plq-Sxk","TP7uE4dZiuc","S-mrYf9KyTw","Qm-__BsV3_M","Qm-__BsV3_M","1VRliFlrvfA","rxO8QZAdkCY",]
+        for v_id in videos:
+            v = await self.R.get_banned_reason(v_id)
+            self.assertEqual(v, {'banned_status': None, 'banned_reason': None, 'banned_message': None})
+
+
 
 

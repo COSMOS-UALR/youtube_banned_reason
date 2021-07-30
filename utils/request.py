@@ -44,6 +44,11 @@ class Request():
             return {'banned_status': None, 
             'banned_reason': None,
             'banned_message': None}
+        # UNPLAYABLE status actually is fine, they all load on youtube
+        elif response['status']=="UNPLAYABLE":
+            return {'banned_status': None, 
+            'banned_reason': None,
+            'banned_message': None}
         else:
             return {'banned_status': response['status'], 
                 'banned_reason': response['reason'],
