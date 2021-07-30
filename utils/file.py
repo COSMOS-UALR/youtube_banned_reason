@@ -28,7 +28,7 @@ def import_data(import_folder:str = "Import"):
                     yield data, fname
                 elif '.csv' in fname:
                     df = pd.read_csv(f"{import_folder}//{fname}")
-                    data = df.T.to_dict().values()
+                    data = list(df.T.to_dict().values())
                     del df 
                     yield data, fname
                 else:
