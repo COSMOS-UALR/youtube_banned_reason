@@ -15,4 +15,15 @@ The script will add these columns to the video data: `banned_status`, `banned_re
     - Currently set to export as xlsx
 
 # Cookies & API Keys
-For the API to work, you need a propritary API key and a cookie from the YouTube iFrame player. There is currenlty one in this project, but we do not know when it will expire. If you are having issues contact Joseph or Thomas. 
+For the API to work, you need a propritary API key and a cookie from the YouTube iFrame player. There is currenlty one in this project, but we do not know when it will expire. One way to generate your own is to open the `player.html` file and fetch the cookie and key from the player:
+1. In Chrome, open `player.html`.
+2. Open the developer side panel (Ctrl+Shift+I).
+3. Click on the 'Network' Tab.
+![Network tab](/img/devpanel.png)
+4. Filter network events by `Name` to order alphabetically.
+![Filter by name](/img/filterpanel.png)
+5. Look for the event starting with `player?key=` and click on it.
+6. Scroll down to reveal the `Request Headers` and make a note of the API key (within the `path` parameter) as well as the `cookie`.
+![Filter by name](/img/parameters.png)
+
+If you are having issues contact Joseph or Thomas. 
